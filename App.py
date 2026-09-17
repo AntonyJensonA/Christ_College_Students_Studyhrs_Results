@@ -45,4 +45,4 @@ if  (area >=600 or area <=3000) and (bedroom >= 1 or bedroom <=4) and (floor >= 
 
         prediction = model.predict(input_data)
         pred = prediction[0]
-        st.success(f"Predicted Price: ₹{pred:.2f} Lakhs")
+        st.write(f"Predicted Price: ₹{pred:.2f} Lakhs")
