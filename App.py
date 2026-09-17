@@ -41,7 +41,7 @@ if st.button("Predict"):
         input_data = pd.DataFrame({
             "Area_Sq_Ft": [area],
             "Bedrooms": [bedroom],
-            "Price_Lakhs": [floor]
+            "Total_Floors": [floor]
         })
         prediction = model.predict(input_data)
         pred = prediction[0]
