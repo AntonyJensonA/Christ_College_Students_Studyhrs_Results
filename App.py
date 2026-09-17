@@ -13,4 +13,4 @@ if st.button("Predict"):
     st.success("Pass")
   else:
     st.error("Fail")
-  print("Probabiliy : ",probability)
+  st.write("probability : ",probability)
