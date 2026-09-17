@@ -39,9 +39,9 @@ if st.button("Predict"):
         valid = False
     if valid:
         input_data = pd.DataFrame({
-            "Area": [area],
+            "Area_Sq_Ft": [area],
             "Bedrooms": [bedroom],
-            "Floor": [floor]
+            "Price_Lakhs": [floor]
         })
         prediction = model.predict(input_data)
         pred = prediction[0]
