@@ -8,7 +8,7 @@ hours = st.number_input("Enter the study hours" , min_value =0.0 ,max_value = 15
 
 if st.button("Predict"):
   prediction = model.predict([[hours]])
-  probablity = model.predict_proba([[hours]])
+  probability = model.predict_proba([[hours]])
   if prediction[0] == 1:
     st.success("Pass")
   else:
