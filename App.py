@@ -26,23 +26,23 @@ floor = st.number_input(
     value=2
 )
 
-if st.button("Predict"):
-    if area < 600 or area > 3000:
-        st.error("Area should be between 600 and 3000 sq ft")
-        st.stop()
-    if bedroom < 1 or bedroom > 4:
-        st.error("Number of bedrooms should be between 1 and 4")
-        st.stop()
-    if floor < 0 or floor > 10:
-        st.error("Floor number should be between 0 and 10")
-        st.stop()
+if area < 600 or area > 3000:
+    st.error("Area should be between 600 and 3000 sq ft")
+    st.stop()
+if bedroom < 1 or bedroom > 4:
+    st.error("Number of bedrooms should be between 1 and 4")
+    st.stop()
+if floor < 0 or floor > 10:
+    st.error("Floor number should be between 0 and 10")
+    st.stop()
+if  (area >=600 or area <=3000) and (bedroom >= 1 or bedroom <=4) and (floor >= 0 or floor <= 10):
+    if st.button("Predict"):
+        input_data = pd.DataFrame({
+            "Area": [area],
+            "Bedrooms": [bedroom],
+            "Floor": [floor]
+        })
 
-    input_data = pd.DataFrame({
-        "Area": [area],
-        "Bedrooms": [bedroom],
-        "Floor": [floor]
-    })
-
-    prediction = model.predict(input_data)
-    pred = prediction[0]
-    st.success(f"Predicted Price: ₹{pred:.2f} Lakhs")
+        prediction = model.predict(input_data)
+        pred = prediction[0]
+        st.success(f"Predicted Price: ₹{pred:.2f} Lakhs")
