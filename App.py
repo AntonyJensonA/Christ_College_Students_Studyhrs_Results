@@ -23,4 +23,5 @@ input_data = pd.DataFrame({
 
 if st.button("Predict"):
   prediction = model.predict(input_data)
-  st.success("Predicted Price : ",prediction[0])
+  pred = prediction[0]
+  st.success("Predicted Price : ",pred)
