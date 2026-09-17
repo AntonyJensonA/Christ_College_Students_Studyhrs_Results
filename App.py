@@ -2,23 +2,25 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-model = joblib.load("logistic_regression_student_study_model.pkl")
+model = joblib.load("Price_Model.pkl")
 
 st.title("Student Pass / Fail Based on Study Hours")
-hours = st.number_input("Enter the study hours" , min_value =0.0 ,max_value = 15.0 ,value=5.0)
-attendance = st.number_input("Enter the attendance" , min_value =0.0 ,max_value = 100.0,value=75.0)
+area = st.number_input("Enter the area in sq_ft" , min_value = 600.00 ,max_value = 3000.0 ,value=610.0)
+if area <600.00 or area>300.00:
+  st.error("Area should be between 600 and 3000 sq ft")
+bedroom = st.number_input("Enter the number of bedrooms" , min_value =1.0 ,max_value = 4.0,value=2.0)
+if bedroom <1.0 or bedroom>4.0:
+  st.error("No of bedrooms should be between 1 and 10")
+floor = st.number_input("Enter the number of bedrooms" , min_value = 0.0 ,max_value = 10.0,value=2.0)
+if floor <1.0 or floor>10.0:
+  st.error("No of floors should be between 1 and 10")
 
 input_data = pd.DataFrame({
-  "StudyHours":[hours],
-  "Attendance":[attendance]
+  "Area":[area],
+  "Bedrooms":[bedroom],
+  "Floor":[floor]
 })
 
 if st.button("Predict"):
   prediction = model.predict(input_data)
-  probability = model.predict_proba(input_data)
-  if prediction[0] == 1:
-    st.success("Pass")
-  else:
-    st.error("Fail")
-  pass_probability = probability[0][1]
-  st.write("Pass probability : ",pass_probability*100,"%")
+  st.success("Predicted Price : ",prediction)
